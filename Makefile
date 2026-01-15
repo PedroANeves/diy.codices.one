@@ -19,3 +19,11 @@ site: image # Generates a new hugo site.
 		-v "$$PWD:/src:Z" \
 		$(IMAGE_NAME) \
 		new site site
+
+.PHONY: dev
+dev: # Runs development server.
+	$(CONTAINER_RUNTIME) run --rm -it \
+		-p 1313:1313 \
+		-v "$$PWD:/src:Z" \
+		$(IMAGE_NAME) \
+		server --source site --bind 0.0.0.0 -D

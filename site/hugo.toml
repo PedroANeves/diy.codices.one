@@ -1,3 +1,4 @@
 baseURL = 'https://diy.codices.one/'
 languageCode = 'en-us'
 title = 'diy.codices.one'
+publishDir = "../public"
