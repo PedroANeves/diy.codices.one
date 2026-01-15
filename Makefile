@@ -12,3 +12,10 @@ image: # Builds hugo container for development.
 		-f Containerfile \
 		--build-arg HUGO_VERSION=$(HUGO_VERSION) \
 		-t $(IMAGE_NAME) .
+
+.PHONY: site
+site: image # Generates a new hugo site.
+	$(CONTAINER_RUNTIME) run --rm -it \
+		-v "$$PWD:/src:Z" \
+		$(IMAGE_NAME) \
+		new site site
