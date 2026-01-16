@@ -14,7 +14,10 @@ jobs:
       CONTAINER_RUNTIME: docker
       BUILD_FILE: Containerfile
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
+        with:
+          submodules: recursive
+          fetch-depth: 1
 
       - name: Build image
         run: make image
