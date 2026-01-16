@@ -20,6 +20,15 @@ site: image # Generates a new hugo site.
 		$(IMAGE_NAME) \
 		new site site
 
+.PHONY: build
+build: # Build static pages.
+	$(CONTAINER_RUNTIME) run --rm -it \
+		-p 1313:1313 \
+		-v "$$PWD:/src:Z" \
+		$(IMAGE_NAME) \
+		--source site \
+		--minify
+
 .PHONY: post
 post: image # Creates a new post.
 	$(CONTAINER_RUNTIME) run --rm -it \
