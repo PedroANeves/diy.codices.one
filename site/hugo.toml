@@ -4,3 +4,8 @@ title = 'diy.codices.one'
 theme = 'terminal'
 publishDir = "../public"
 copyright = '2026 codices.one'
+
+[params]
+  logo.logoText = "DIY.codices.one"
+  centerTheme = true
+  readMore = "Read more"
