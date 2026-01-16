@@ -1,0 +1,30 @@
+name: Deploy Hugo site
+
+on:
+  push:
+    branches: ["master"]
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      CONTAINER_RUNTIME: docker
+      BUILD_FILE: Containerfile
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build image
+        run: make image
+
+      - name: Build site
+        run: make build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+
