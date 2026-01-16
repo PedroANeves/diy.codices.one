@@ -20,6 +20,14 @@ site: image # Generates a new hugo site.
 		$(IMAGE_NAME) \
 		new site site
 
+.PHONY: post
+post: image # Creates a new post.
+	$(CONTAINER_RUNTIME) run --rm -it \
+	  -v "$$PWD:/src:Z" \
+	  $(IMAGE_NAME) \
+	  new post.md \
+	  --source site
+
 .PHONY: dev
 dev: # Runs development server.
 	$(CONTAINER_RUNTIME) run --rm -it \
