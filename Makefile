@@ -34,4 +34,4 @@ dev: # Runs development server.
 		-p 1313:1313 \
 		-v "$$PWD:/src:Z" \
 		$(IMAGE_NAME) \
-		server --source site --bind 0.0.0.0 -D
+		server --source site --bind 0.0.0.0 -D --minify
