@@ -33,6 +33,16 @@ build: clear # Build static pages.
 		--source site \
 		--panicOnWarning
 
+.PHONY: check
+check: build # Checks generated links using lychee.
+	$(CONTAINER_RUNTIME) run --rm -it \
+		--init \
+		-v "$$PWD:/input" \
+		docker.io/lycheeverse/lychee \
+		--verbose \
+		--root-dir /input/public \
+		"/input/public/**/*.html"
+
 .PHONY: post
 post: image # Creates a new post.
 	$(CONTAINER_RUNTIME) run --rm -it \
