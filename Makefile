@@ -35,10 +35,11 @@ build: clear # Build static pages.
 
 .PHONY: check
 check: build # Checks generated links using lychee.
-	$(CONTAINER_RUNTIME) run --rm -it \
+	$(CONTAINER_RUNTIME) run --rm \
 		--init \
 		-v "$$PWD:/input" \
 		docker.io/lycheeverse/lychee \
+		--no-progress \
 		--verbose \
 		--root-dir /input/public \
 		"/input/public/**/*.html"
