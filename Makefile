@@ -8,7 +8,7 @@ help: # Show this help.
 
 .PHONY: clear
 clear: # Cleanup generated files.
-	rm -fr public/
+	rm -fr public/ || true
 
 .PHONY: image
 image: # Builds hugo container for development.
