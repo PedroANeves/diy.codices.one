@@ -6,6 +6,10 @@ IMAGE_NAME		?= hugo:$(HUGO_VERSION)
 help: # Show this help.
 	@egrep -h '\s#\s' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?# "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
+.PHONY: clear
+clear: # Cleanup generated files.
+	rm -fr public/
+
 .PHONY: image
 image: # Builds hugo container for development.
 	$(CONTAINER_RUNTIME) build \
